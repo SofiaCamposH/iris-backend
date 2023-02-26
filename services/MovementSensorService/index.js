@@ -7,12 +7,17 @@ exports.getAllMovementReadings = async () => {
 exports.createMovementReading = async (reading) => {
   return MovementSensorModel.create(reading);
 };
+
 exports.getMovementReadingById = async (id) => {
   return MovementSensorModel.findById(id);
 };
 
-exports.updateMovementReading = async (id, blog) => {
-  return MovementSensorModel.findByIdAndUpdate(id, blog);
+exports.getMovementReadingByUserId = async (userId) => {
+  return MovementSensorModel.find({ userId: userId });
+};
+
+exports.updateMovementReading = async (id, movement) => {
+  return MovementSensorModel.findByIdAndUpdate(id, movement);
 };
 
 exports.deleteMovementReading = async (id) => {

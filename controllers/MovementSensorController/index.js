@@ -2,7 +2,6 @@ const movementSensorService = require("../../services/MovementSensorService");
 
 exports.getAllMovementSensors = async (req, res) => {
   try {
-    console.log("getAllMovementSensors");
     const movementSensors =
       await movementSensorService.getAllMovementReadings();
     res.json({ data: movementSensors, status: "success" });
@@ -27,6 +26,16 @@ exports.getMovementSensorById = async (req, res) => {
     const movementSensor = await movementSensorService.getMovementReadingById(
       req.params.id
     );
+    res.json({ data: movementSensor, status: "success" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getMovementSensorByUserId = async (req, res) => {
+  try {
+    const movementSensor =
+      await movementSensorService.getMovementReadingByUserId(req.params.userId);
     res.json({ data: movementSensor, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });

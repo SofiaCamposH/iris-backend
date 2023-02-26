@@ -8,8 +8,10 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(bodyParser.json());
 const movementSensorRouter = require("./routes/MovementSensorRoutes");
+const userRoute = require("./routes/UserRoute");
 
 app.use("/api/movement", movementSensorRouter);
+app.use("/api/user", userRoute);
 
 //configure mongoose
 mongoose.connect(
@@ -26,6 +28,6 @@ mongoose.connect(
     }
   }
 );
-// 
+//
 
 app.listen(process.env.PORT || 3333);
