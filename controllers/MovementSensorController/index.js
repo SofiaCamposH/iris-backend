@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const movementSensorService = require("../../services/MovementSensorService");
 
 exports.getAllMovementSensors = async (req, res) => {
@@ -10,11 +11,13 @@ exports.getAllMovementSensors = async (req, res) => {
   }
 };
 
-exports.createMovementSensor = async (req, res) => {
+exports.createMovementSensorById = async (req, res) => {
   try {
-    const movementSensor = await movementSensorService.createMovementReading(
-      req.body
-    );
+    const movementSensor =
+      await movementSensorService.createMovementReadingByUser(
+        req.body.reading,
+        req.param.userId
+      );
     res.json({ data: movementSensor, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });

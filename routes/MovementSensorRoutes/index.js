@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  createMovementSensor,
+  createMovementSensorById,
   deleteMovementSensor,
   getAllMovementSensors,
   getMovementSensorById,
@@ -10,13 +10,16 @@ const {
 
 const router = express.Router();
 
-router.route("/").get(getAllMovementSensors).post(createMovementSensor);
+router.route("/").get(getAllMovementSensors);
 router
   .route("/:id")
   .get(getMovementSensorById)
   .put(updateMovementSensor)
   .delete(deleteMovementSensor);
 
-router.route("/user/:userId").get(getMovementSensorByUserId);
+router
+  .route("/user/:userId")
+  .get(getMovementSensorByUserId)
+  .post(createMovementSensorById);
 
 module.exports = router;

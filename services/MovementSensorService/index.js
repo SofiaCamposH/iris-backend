@@ -4,8 +4,8 @@ exports.getAllMovementReadings = async () => {
   return MovementSensorModel.find();
 };
 
-exports.createMovementReading = async (reading) => {
-  return MovementSensorModel.create(reading);
+exports.createMovementReadingByUser = async (reading, userId) => {
+  return MovementSensorModel.create({ userId, reading });
 };
 
 exports.getMovementReadingById = async (id) => {
