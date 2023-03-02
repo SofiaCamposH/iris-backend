@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
+const User = require("../User");
 const Schema = mongoose.Schema;
 
 const pulseSensorSchema = new Schema({
-  //   userId: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
+  },
   reading: Number,
   createdAt: {
     type: Date,

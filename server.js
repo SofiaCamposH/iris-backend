@@ -8,9 +8,11 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(bodyParser.json());
 const movementSensorRouter = require("./routes/MovementSensorRoutes");
+const pulseSensorRoute = require("./routes/PulseSensorRoutes");
 const userRoute = require("./routes/UserRoute");
 
 app.use("/api/movement", movementSensorRouter);
+app.use("/api/pulse", pulseSensorRoute);
 app.use("/api/user", userRoute);
 
 //configure mongoose

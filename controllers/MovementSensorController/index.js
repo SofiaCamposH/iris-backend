@@ -16,7 +16,7 @@ exports.createMovementSensorById = async (req, res) => {
     const movementSensor =
       await movementSensorService.createMovementReadingByUser(
         req.body.reading,
-        req.param.userId
+        req.params.userId
       );
     res.json({ data: movementSensor, status: "success" });
   } catch (err) {
